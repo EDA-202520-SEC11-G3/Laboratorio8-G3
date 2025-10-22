@@ -1,9 +1,7 @@
 import os
 
-
 def execute_pytest_test(test_name):
     os.system(f"pytest -v -k \"{test_name}\"")
-
 
 def print_test_options():
     print(" Bienvenido a las pruebas de EDA ".center(80, "="))
@@ -14,20 +12,24 @@ def print_test_options():
     print("3. Colas (Queues)")
     print("4. Pilas (Stacks)")
     print("5. Métodos de Ordenamiento Iterativos")
-    print("7. Mapas")
-    print("     7.A Mapas con manejo linear probing")
-    print("     7.B Mapas con manejo Separate Chaining")
-    print("8. Árboles binarios de búsqueda")
-    print("9. Árboles rojo negro")
+    print("     5.A Ordenamientos Iterativos")
+    print("     5.B Ordenamientos Recursivos")
+    print("6. Mapas")
+    print("     6.A Mapas con manejo linear probing")
+    print("     6.B Mapas con manejo Separate Chaining")
+    print("7. Árboles binarios de búsqueda")
+    print("8. Árboles rojo negro")
     print("0. Salir")
-
 
 def execute_all_tests():
     """Ejecuta todas las pruebas disponibles"""
     execute_list_tests()
     execute_queue_tests()
     execute_stack_tests()
-
+    execute_sorting_tests()
+    execute_map_tests()
+    execute_bst_tests()
+    execute_rbt_tests()
 
 def execute_list_tests(input_option="2"):
     """Ejecuta pruebas relacionadas con listas"""
@@ -39,30 +41,31 @@ def execute_list_tests(input_option="2"):
     for test_name in tests_names:
         execute_pytest_test(test_name)
 
-
 def execute_queue_tests():
     """Ejecuta las pruebas de la cola (queue)"""
     execute_pytest_test("test_queue")
-
 
 def execute_stack_tests():
     """Ejecuta las pruebas de la pila (stack)"""
     execute_pytest_test("test_stack")
     
-def execute_sorting_tests():
+def execute_sorting_tests(input_option="5"):
     tests_names = []
-    tests_names.append("test_iterative_sort_array_list")
-    tests_names.append("test_iterative_sort_single_linked_list")
-    
+    if input_option.lower() == "5.a" or input_option == "5":
+        tests_names.append("test_iterative_sort_array_list")
+        tests_names.append("test_iterative_sort_single_linked_list")
+    if input_option.lower() == "5.b" or input_option == "5":
+        tests_names.append("test_recursive_sort_array_list")
+        tests_names.append("test_recursive_sort_single_linked_list")
     for test_name in tests_names:
         execute_pytest_test(test_name)
 
-def execute_map_tests(input_option="7"):
+def execute_map_tests(input_option="6"):
     """Ejecuta pruebas relacionadas con mapas"""
     tests_names = []
-    if input_option.lower() == "7.a" or input_option == "7":
+    if input_option.lower() == "6.a" or input_option == "6":
         tests_names.append("test_map_linear_probing")
-    if input_option.lower() == "7.b" or input_option == "7":
+    if input_option.lower() == "6.b" or input_option == "6":
         tests_names.append("test_map_separate_chaining")
     for test_name in tests_names:
         execute_pytest_test(test_name)
@@ -74,7 +77,6 @@ def execute_bst_tests():
 def execute_rbt_tests():
     """Ejecuta las pruebas de BST"""
     execute_pytest_test("test_red_black_tree")
-
 
 if __name__ == "__main__":
     """Menú principal de pruebas"""
@@ -102,15 +104,15 @@ if __name__ == "__main__":
         execute_sorting_tests()
         runned = True
         
-    if input_option.startswith("7"):
+    if input_option.startswith("6"):
         execute_map_tests()
         runned = True
     
-    if input_option.startswith("8"):
+    if input_option.startswith("7"):
         execute_bst_tests()
         runned = True
         
-    if input_option.startswith("9"):
+    if input_option.startswith("8"):
         execute_rbt_tests()
         runned = True
 

@@ -245,7 +245,7 @@ def test_rank():
 
 
 @handle_not_implemented
-def test_heigh():
+def test_height():
     tree = rbt.new_map()
     rbt.put(tree, 10, "a")
     h = rbt.height(tree)
