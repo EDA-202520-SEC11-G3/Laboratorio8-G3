@@ -59,14 +59,14 @@ def print_menu():
     print("2- Cargar información de crimenes")
     print("3- Consultar crimenes en un rango de fechas")
     print("4- Consultar crimenes por codigo y fecha")
-    #TODO Agregar opción 5 en el menú, consultar por REPORTING_AREA
+    print("5-Consultar cimenes por Area reportada")
     print("0- Salir")
     print("*******************************************")
 
 # main del ejercicio
 def main():
     """
-    Menú principal
+    Menú principal.
     """
     # bandera para controlar el ciclo del menu
     working = True
